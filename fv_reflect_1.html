@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Fake Voice Detection</title>
+        <style>
+            img {
+                display: block;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <h1>Fake Voice Detection: Reflection 1</h1>
+        
+        <h4>Time frame: project start (February 2021) - June 27, 2021</h4>
+        
+        The first few months of this research was getting up to speed with machine learning. The algorithms used for this type of problem usually fall under the category of deep learning, which is a subset of machine learning with deep neural networks. I watched lots of Andrew Ng videos, read Keras tutorials from Francois Chollet, followed machine learning accounts on Twitter, and played with lots of toy examples. I am still learning every day, but this period helped me to know enough to get started with a real project.
+        <br><br>
+        We want to be able to reliably distinguish AI-synthesized fake voices from real human voices. The solution is in the form of an algorithm that takes as input a recording of a voice and outputs whether it thinks the voice is human or computer-generated. To solve this problem, we first looked to see if anyone else had solved it already. It turns out that the answer was yes; a paper called <a href="https://arxiv.org/abs/2005.13770" target="_blank">DeepSonar</a> created a neural network that supposedly solves this problem well. After we found this paper, we changed plans: instead of making an algorithm from scratch, we decided to try to improve on the existing one.
+        <br><br>
+        A key concept in cybersecurity is thinking like an adversary. If you put yourself in the shoes of an attacker and think of ways that your system could be broken, you can prepare better defenses for the attacks that do happen. Following this concept, we decided that the long-term goal for this project is to launch machine learning attacks on DeepSonar in an effort to improve upon their results. These attacks will include data poisoning and adversarial examples, but we are a long way from doing that...
+        <br><br>
+        An annoying thing is that the authors of DeepSonar did not publish any sort of code. This means that I have to re-implement the paper. The datasets used in DeepSonar are made up of .wav files, and each file is either a human voice or a computer-generated voice. They take an existing neural network that was trained for celebrity speaker recognition and input .wav files from the dataset. Then, the activations of specific neurons from specific layers in the network are selected for inputs to another neural network, which is a binary classifier that outputs either human or computer-generated. The novelty in the paper was the algorithm to select the input activations to the binary classifier. This means that I should be able to use the implementation of the existing speaker recognition system, but I would have to implement the activation selection algorithm from scratch by reading the paper.
+        <br><br>
+        Recently it occurred to me to email the authors of DeepSonar and ask for code - they have not responded to me yet, but it hasn't been very long (as of late June). Before I emailed them, I downloaded the existing speaker recognition system and played with it. However, the code is old, broken, and difficult to understand. As of this writing, I am working on refactoring the code for the SR system. I need to have a working deep learning model in tensorflow in order to move to the next phase of the project.
+        <br><br>
+        Another thing I am still figuring out is my development environment. Deep learning models take a long time to train, and it would not be realistic to train the models on my laptop. Additionally, datasets are extremely large for audio files. The latter is easy to solve because you can just get a giant external hard drive (or many) to store all the datasets. The former is a bit more difficult. You need a graphics card, preferably multiple, to parallelize your tensorflow code if you want to train deep learning models quickly. With the GPU market it's tough to find GPUs for a reasonable price. I experimented with some cloud resources such as AWS, Azure, and a Mizzou thing called the Lewis cluster. I ended up getting the Lewis cluster working and writing some documentation for what I did, but one of the graduate students in the lab graduated and had a PC that he was using for the lab that Dr. Lin wanted to keep. I inherited the PC from him and I'm still figuring out how to use the OS, Ubuntu Linux. As of this writing, I'm having issues with the GUI; however, I don't want to write my scripts in vim or nano, I want to write them in PyCharm! I am still trying to figure out the GUI, but I am also exploring rsync for copying the python scripts on my laptop through the SSH connection with the Ubuntu box.
+        <br><br>
+        I think I like research for two reasons. The first reason is that anything I do or implement for the lab is my authentic work. In CS classes I've taken the projects can be fun, but most of the time every other student in the class also has to follow the rubric and submit the same thing as you. When I explored app and web development, I would come up with an idea only to search it on the app store or the internet and find many existing applications that do the same thing. I still think that these types of projects are fun and good ways to learn, but I am also someone who likes to be creative and make something totally independently. The second reason is that I'm allowed to be patient and work on projects for a long time. I enjoy the process; deep learning is a really interesting subject that I've wanted to know the details of since I started learning about CS, and I really enjoy the process of filling in my gaps of understanding by implementing deep learning algorithms myself. The longer I work on this project and the more I focus on the details, the more I learn and the better the output will be. This is in contrast to class projects, which usually only last for a few weeks at most.
+        <br><br>
+        Stephen King says he writes to find out what he's thinking and this page feels like that. It is Sunday today and I think this reflection has helped me organize some of my thoughts before the week of research ahead. This can be the first of many reflections about this project.
+        <br><br>
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
